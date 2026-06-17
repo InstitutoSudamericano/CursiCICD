@@ -1,1 +1,21 @@
+name: Ejercicio 4 - Info del Commit
+
+# Se ejecutará automáticamente cuando hagas 'push' a la rama 'main'
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  mostrar_commit:
+    name: Mostrar información del último commit
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descargamos el código del repositorio (necesario para tener el historial de Git)
+    - name: Descargar código (Checkout)
+      uses: actions/checkout@v4
+
+    # 2. Ejecutamos el comando solicitado para ver el autor, correo, mensaje y fecha
+    - name: Ejecutar git log -1
+      run: git log -1
 
