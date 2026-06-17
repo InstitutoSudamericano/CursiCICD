@@ -1,1 +1,17 @@
+on: [push]
 
+jobs:
+  estadisticas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Número de carpetas.
+        run: find . -type d | wc -l
+
+      - name: Número de archivos.
+        run: find . -type f | wc -l
+
+      - name: Archivo más grande.
+        run: du -ah . | sort -rh | head -1
