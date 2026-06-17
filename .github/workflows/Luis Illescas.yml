@@ -1,1 +1,24 @@
+name: Ejercicio 2 - Info del sistema operativo
 
+run-name: Luis Illescas ejecutando sistema en GitHub Actions 🚀
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sistema-info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar sistema operativo
+        run: uname -a
+
+      - name: Mostrar versión de Ubuntu
+        run: cat /etc/os-release
+
+      - name: Mostrar espacio en disco
+        run: df -h
+
+      - name: Mostrar memoria RAM
+        run: free -m
