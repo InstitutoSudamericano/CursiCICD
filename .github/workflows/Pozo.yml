@@ -1,1 +1,24 @@
 
+name: Generar reporte TXT
+
+on:
+  push:
+
+jobs:
+  reporte:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generar reporte
+        run: |
+          echo "Repositorio: ${{ github.repository }}" > reporte.txt
+          echo "Rama: ${{ github.ref_name }}" >> reporte.txt
+          echo "Usuario: ${{ github.actor }}" >> reporte.txt
+          echo "Fecha: $(date)" >> reporte.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reporte
+          path: reporte.txt
