@@ -1,1 +1,26 @@
-# Archivo de Alexis
+name: Alexis - Contar Lineas
+
+on: [push]
+
+jobs:
+  metricas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Cantidad de archivos TS
+        run: |
+          echo "Archivos .ts:"
+          find . -name "*.ts" | wc -l
+
+      - name: Cantidad de archivos JS
+        run: |
+          echo "Archivos .js:"
+          find . -name "*.js" | wc -l
+
+      - name: Total de lineas
+        run: |
+          echo "Total de lineas:"
+          find . \( -name "*.ts" -o -name "*.js" \) -exec cat {} \; | wc -l
