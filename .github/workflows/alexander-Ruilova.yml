@@ -1,1 +1,20 @@
+name: Informacion General
 
+on:
+  push:
+    branches:
+      - categorias
+
+jobs:
+  mostrar-info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mostrar informacion
+        run: |
+          echo "Repositorio: $GITHUB_REPOSITORY"
+          echo "Workflow: $GITHUB_WORKFLOW"
+          echo "Usuario: $GITHUB_ACTOR"
+          echo "Rama: $GITHUB_REF_NAME"
+          echo "Commit: ${GITHUB_SHA::7}"
+          echo "Fecha: $(date '+%Y-%m-%d')"
