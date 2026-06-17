@@ -1,1 +1,21 @@
-Carlos
+name: Analisis de Codigo - Buscar palabras clave - Ejercicio 6
+
+on: [push, pull_request]
+
+jobs:
+  buscar-palabras-clave:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Buscar TODO, FIXME y console.log
+        run: |
+          echo "--- Buscando TODOs ---"
+          grep -R "TODO" . || true
+          
+          echo "--- Buscando FIXMEs ---"
+          grep -R "FIXME" . || true
+          
+          echo "--- Buscando console.log ---"
+          grep -R "console.log" . || true
