@@ -1,1 +1,19 @@
+name: Ejercicio 3 - Listar archivos
 
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  listar-archivos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Mostrar carpetas y archivos
+        run: ls -la
+
+      - name: Contar archivos
+        run: find . -type f | wc -l
